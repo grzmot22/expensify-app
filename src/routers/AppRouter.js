@@ -4,12 +4,7 @@ import ExpenseDashboardPage from './../components/ExpenseDashboardPage';
 import AddExpensePage from './../components/AddExpensePage';
 import EditExpensePage from './../components/EditExpensePage';
 import HelpPage from './../components/HelpPage';
-
-const NotFoundPage = () => (
-    <div>
-    404! - <Link to="/">Go home</Link>
-    </div>
-);
+import NotFoundPage from './../components/NotFoundPage';
 
 const Header = () => (
     <header>
