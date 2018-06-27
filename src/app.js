@@ -6,23 +6,30 @@ import './styles/styles.scss';
 
 const ExpenseDashboardPage = () => (
     <div>
-    this os from my dashboard component
+    this is from my dashboard component
     </div>
 
 );
 
 const AddExpensePage = () => (
     <div>
-    this os from my add expense component
+    this is from my add expense component
     </div>
 
+);
+
+const EditExpensePAge = () => (
+    <div>
+    this is from my edit expense component
+    </div>
 );
 
 const routes = (
 <BrowserRouter>
     <div>
-    <Route path="/" component={ExpenseDashboardPage}/>
+    <Route path="/" component={ExpenseDashboardPage} exact={true}/>
     <Route path="/create" component={AddExpensePage} />
+    <Route path="/edit" component={EditExpensePAge} />
     </div>
     
 </BrowserRouter>
