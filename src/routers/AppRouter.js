@@ -1,13 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch, Link, NavLink} from 'react-router-dom';
-import ExpenseDashboardPage from './components/ExpenseDashboardPage';
-
-const AddExpensePage = () => (
-    <div>
-    this is from my add expense component
-    </div>
-
-);
+import ExpenseDashboardPage from './../components/ExpenseDashboardPage';
+import AddExpensePage from './../components/AddExpensePage';
 
 const EditExpensePage = () => (
     <div>
