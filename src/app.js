@@ -39,9 +39,9 @@ const NotFoundPage = () => (
 const Header = () => (
     <header>
     <h1>Expernsify</h1>
-    <Link to="/">Dashboard </Link>
-    <Link to="/create">Create </Link>
-    <Link to="/edit">Edit </Link>
+    <Link to="/">Dashboard</Link>
+    <Link to="/create">Create Expense</Link>
+    <Link to="/edit">Edit Expense</Link>
     <Link to="/help">Help</Link>
     </header>
 );
