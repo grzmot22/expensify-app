@@ -12,7 +12,7 @@ const store = createStore((state={ count: 0 }, action) => {
         }
         case 'RESET':
         return {
-            count: state.count = 0
+            count: 0
         }
         default:
         return state;
