@@ -1,3 +1,6 @@
+// 
+// Obeject dectrucuring
+// 
 const person = {
     name: 'Andrew',
     age: 23,
@@ -29,3 +32,8 @@ const book = {
 const {name: publisherName = 'Self-Published'} = book.publisher;
 
 console.log(publisherName);
+
+// 
+// Array destucturing
+// 
+
