@@ -17,3 +17,11 @@ const {city, temp: temperature} =person.location;
 if (city && temperature) {
     console.log(`It's ${temperature} in ${city}`)
 }
+
+const book = {
+    title: 'Ego is the Enemy',
+    author: 'Ryan Holiday',
+    publisher: {
+        name: 'Penguin'
+    }
+};
