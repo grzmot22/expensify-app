@@ -7,4 +7,7 @@ const person = {
     }
 };
 
-console.log(`${person.name} is ${person.age}`);
+const name = person.name;
+const age = person.age;
+
+console.log(`${name} is ${age}`);
