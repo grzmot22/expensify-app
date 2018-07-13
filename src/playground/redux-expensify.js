@@ -1,6 +1,20 @@
 import { createStore, combineReducers} from 'redux';
-
+import uuid from 'uuid';
 // ADD_EXPENSE
+const addExpense = (
+    { 
+        desription = '',
+        note = '',
+        amount = '',
+        createdAt = 0
+    } = {}
+) => ({
+    type: 'ADD_EXPENSE',
+    expense: {
+        id: uuid()
+    }
+});
+
 // REMOVE_EXPENSE
 // EDIT_EXPENSE
 // SET_TEXT-FILTER
