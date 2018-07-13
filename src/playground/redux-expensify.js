@@ -11,7 +11,11 @@ const addExpense = (
 ) => ({
     type: 'ADD_EXPENSE',
     expense: {
-        id: uuid()
+        id: uuid(),
+        desription,
+        note,
+        amount,
+        createdAt
     }
 });
 
@@ -59,7 +63,11 @@ const store = createStore(
     })
 );
 
-console.log(store.getState());
+store.subscribe(() =>{
+    console.log(store.getState());
+});
+
+store.dispatch(addExpense({desription: 'Rent', amount: 100}));
 
 const demoState = {
     expenses: [{
