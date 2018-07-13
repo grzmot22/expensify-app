@@ -7,13 +7,13 @@ const person = {
     }
 };
 
-const {name, age} = person;
+const {name: firstName = 'Anonymouns', age} = person;
 // const name = person.name;
 // const age = person.age;
 
-console.log(`${name} is ${age}`);
+console.log(`${firstName} is ${age}`);
 
-const {city, temp} =person.location;
-if (city && temp) {
-    console.log(`It's ${temp} in ${city}`)
+const {city, temp: temperature} =person.location;
+if (city && temperature) {
+    console.log(`It's ${temperature} in ${city}`)
 }
