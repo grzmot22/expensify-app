@@ -22,9 +22,12 @@ const withAdminWarming = (WrappedComponent) => {
 const requireAuthentication = (WrappedComponent) => {
     return (props) => (
         <div>
-        {props.isAuthenticated && <p>This is private info. Please don't share!</p>}
-        {!props.isAuthenticated && <p>This is public info. Please don't share!</p>}
-        <WrappedComponent {...props}/>
+        {props.isAuthenticated ? (
+            <WrappedComponent {...props}/>
+        ) : (
+            <p>Please login to view info</p>
+        )}
+        
         </div> 
     )
 };
