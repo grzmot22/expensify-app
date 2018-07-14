@@ -9,10 +9,10 @@ const ExpenseList = (props) => (
 
 ) ;
 
-const ConnectedExpenseList = connect((state) => {
+const mapStateToProps = (state) => {
     return {
         expenses: state.expenses
     };
-})(ExpenseList);
+};
 
-export default ConnectedExpenseList;
+export default connect(mapStateToProps)(ExpenseList);
