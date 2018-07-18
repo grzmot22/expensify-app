@@ -1,9 +1,10 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch, Link, NavLink} from 'react-router-dom';
+import ExpenseForm from './ExpenseForm';
 
 const AddExpensePage = () => (
     <div>
-    this is from my add expense component
+    <h1>Add Expense</h1>
+    <ExpenseForm />
     </div>
 
 );
