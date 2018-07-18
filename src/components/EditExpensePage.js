@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
 
 const EditExpensePage = (props) => {
-    console.log(props);
     return (
         <div>
         <ExpenseForm
+        expense={props.expense}
         onSubmit={(expense) => {
             console.log('updated', expense);
         }}
