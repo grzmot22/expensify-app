@@ -11,9 +11,11 @@
     "test": "jest"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.1.0",
+    "@types/react-dom": "^16.0.8",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
-    "babel-loader": "^8.0.4",
+    "babel-loader": "7",
     "babel-plugin-object-rest-spread": "^0.0.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -41,5 +43,8 @@
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.9",
     "yarn-upgrade-all": "^0.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2"
   }
 }
