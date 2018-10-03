@@ -20,7 +20,7 @@ test('should setup edit expense action object', () => {
     });
 });
 
-test('should setup add expense action object with provided vaules', ()  => {
+test('should setup add expense action object with provided values', ()  => {
     const expenseData = {
         description: 'Rent',
         amount: 10450,
@@ -37,7 +37,7 @@ test('should setup add expense action object with provided vaules', ()  => {
     });
 });
 
-test('should setup add expense action object with default vaules', ()  => {
+test('should setup add expense action object with default values', ()  => {
     const action = addExpense();
     expect(action).toEqual({
         type:'ADD_EXPENSE',
