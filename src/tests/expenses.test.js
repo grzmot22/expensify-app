@@ -19,3 +19,37 @@ test('should setup edit expense action object', () => {
         
     });
 });
+
+test('should setup add expense action object with provided vaules', ()  => {
+    const expenseData = {
+        description: 'Rent',
+        amount: 10450,
+        createdAt: 1000,
+        note: 'This was lat moths rent'
+    };
+    const action = addExpense(expenseData);
+    expect(action).toEqual({
+        type: 'ADD_EXPENSE',
+        expense: {
+            ...expenseData,
+            id: expect.any(String)
+        }
+    });
+});
+
+test('should setup add expense action object with default vaules', ()  => {
+    const expenseData = {
+        description: '',
+        amount: 0,
+        createdAt: 0,
+        note: ''
+    };
+    const action = addExpense();
+    expect(action).toEqual({
+        type:'ADD_EXPENSE',
+        expense: {
+            ...expenseData,
+            id: expect.any(String)
+        }
+    });
+});
