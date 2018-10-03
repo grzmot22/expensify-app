@@ -38,18 +38,15 @@ test('should setup add expense action object with provided vaules', ()  => {
 });
 
 test('should setup add expense action object with default vaules', ()  => {
-    const expenseData = {
-        description: '',
-        amount: 0,
-        createdAt: 0,
-        note: ''
-    };
     const action = addExpense();
     expect(action).toEqual({
         type:'ADD_EXPENSE',
         expense: {
-            ...expenseData,
-            id: expect.any(String)
+            id: expect.any(String),
+            description: '',
+            amount: 0,
+            createdAt: 0,
+            note: ''
         }
     });
 });
