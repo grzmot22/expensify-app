@@ -13,7 +13,7 @@ export default class ExpenseForm extends React.Component {
             note: props.expense ? props.expense.note : '',
             amount: props.expense ? (props.expense.amount / 100).toString() : '',
             createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
-            calendearFocused: false,
+            calendarFocused: false,
             error: ''
         };
     }
@@ -38,7 +38,7 @@ export default class ExpenseForm extends React.Component {
         }
     };
     onFocusChange = ({ focused }) => {
-        this.setState(() => ({ calendearFocused: focused }))
+        this.setState(() => ({ calendarFocused: focused }))
     };
     onSubmit = (e) => {
         e.preventDefault();
@@ -76,7 +76,7 @@ export default class ExpenseForm extends React.Component {
                 <SingleDatePicker 
                 date={this.state.createdAt}
                 onDateChange={this.onDateChange}
-                focused={this.state.calendearFocused}
+                focused={this.state.calendarFocused}
                 onFocusChange={this.onFocusChange}
                 numberOfMonths={1}
                 isOutsideRange={() => false}

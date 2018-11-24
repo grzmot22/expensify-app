@@ -2,7 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ExpenseForm from '../../components/ExpenseForm';
 import expenses from '../fixtures/expenses';
-import { wrap } from 'module';
+import moment from 'moment';
+import { SingleDatePicker } from 'react-dates';
 
 test('should render ExpenseForm correctly', () => {
   const wrapper = shallow(<ExpenseForm />);
@@ -72,5 +73,19 @@ test('should set note on textarea change', () => {
         note: expenses[0].note,
         createdAt: expenses[0].createdAt
     });
+  });
+  
+  test('should set new date on date change', () => {
+    const now = moment();
+    const wrapper = shallow(<ExpenseForm />);
+    wrapper.find(SingleDatePicker).prop('onDateChange')(now);
+    expect(wrapper.state('createdAt')).toEqual(now);
+  });
+  
+  test('should set calendar focus on change', () => {
+    const focused = true;
+    const wrapper = shallow(<ExpenseForm />);
+    wrapper.find(SingleDatePicker).prop('onFocusChange')({ focused });
+    expect(wrapper.state('calendarFocused')).toBe(focused);
   });
   
