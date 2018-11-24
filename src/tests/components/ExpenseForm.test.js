@@ -31,3 +31,12 @@ test('should set description on input change', () => {
   });
   expect(wrapper.state('description')).toBe(value);
 });
+
+test('should set note on textarea change', () => { 
+    const wrapper = shallow(<ExpenseForm />);
+    const value = 'New text';
+    wrapper.find('textarea').simulate('change', {
+        target: { value }
+    });
+    expect(wrapper.state('note')).toBe(value);
+  });
