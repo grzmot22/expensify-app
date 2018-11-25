@@ -42,3 +42,13 @@ test('should handle text change', () => {
   expect(setTextFilter).toHaveBeenLastCalledWith(value);
 });
 
+test('should sort by date', () => {
+    const value = 'date';
+    wrapper.setProps({
+        filters: altFilters
+    });
+    wrapper.find('select').simulate('change', {
+        target: { value }
+    });
+    expect(sortByDate).toHaveBeenLastCalledWith();
+});
