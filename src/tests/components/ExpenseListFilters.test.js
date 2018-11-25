@@ -25,4 +25,11 @@ beforeEach(() =>{
 
 test('should render ExpenseListFilters correcly', () => {
   expect(wrapper).toMatchSnapshot();
-})
+});
+
+test('should render ExpenseListFilters with alt data correcly', () => {
+    wrapper.setProps({
+        filters: altFilters
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
