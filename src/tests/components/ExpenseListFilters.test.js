@@ -33,3 +33,12 @@ test('should render ExpenseListFilters with alt data correcly', () => {
     });
     expect(wrapper).toMatchSnapshot();
   });
+
+test('should handle text change', () => {
+    const value = 'rent'
+    wrapper.find('input').simulate('change', {
+      target: { value }
+  });
+  expect(setTextFilter).toHaveBeenLastCalledWith(value);
+});
+
