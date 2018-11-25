@@ -52,3 +52,14 @@ test('should sort by date', () => {
     });
     expect(sortByDate).toHaveBeenLastCalledWith();
 });
+
+test('should sort by amount', () => {
+    const value = 'amount';
+    wrapper.setProps({
+        filters: altFilters
+    });
+    wrapper.find('select').simulate('change', {
+        target: { value }
+    });
+    expect(sortByAmount).toHaveBeenLastCalledWith();
+});
