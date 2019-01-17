@@ -4,3 +4,7 @@ yarn-error.log
 .vs
 .vscode
 package-lock.json
+public/bundle.js
+public/bundle.js.map
+public/styles.css
+public/styles.css.map
