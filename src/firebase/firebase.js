@@ -16,7 +16,11 @@ const database = firebase.database();
 database.ref().set({
     name: 'Bob S',
     age: 23,
-    isSingle: true,
+    stressLevel: 5,
+    job: {
+        title: 'Sotfware developer',
+        company: 'Google'
+    },
     location: {
         city: 'London',
         country: 'United Kingdom'
@@ -27,7 +31,12 @@ database.ref().set({
     console.log('This failed.', e);
 });
 
-database.ref('isSingle').set(null);
+database.ref().update({
+    stressLevel: 9,
+    'job/company': 'Amazon',
+    'location/city': 'Seattle'
+    
+});
 
 // database.ref('isSingle')
 // .remove()
