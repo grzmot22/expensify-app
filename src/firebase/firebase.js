@@ -22,3 +22,12 @@ database.ref().set({
         country: 'United Kingdom'
     }
 });
+
+database.ref('age').set(24);
+database.ref('location/city').set('St Albans');
+
+database.ref('attributes').set({
+    height: 33,
+    weight: 66
+
+});
