@@ -21,13 +21,21 @@ database.ref().set({
         city: 'London',
         country: 'United Kingdom'
     }
+}).then(() => {
+    console.log('Data is saved');
+}).catch((e) => {
+    console.log('This failed.', e);
 });
 
-database.ref('age').set(24);
-database.ref('location/city').set('St Albans');
+// database.ref('age').set(24);
+// database.ref('location/city').set('St Albans');
 
 database.ref('attributes').set({
     height: 33,
     weight: 66
 
+}).then(() => {
+    console.log('Data is saved');
+}).catch((e) => {
+    console.log('This failed.', e);
 });
