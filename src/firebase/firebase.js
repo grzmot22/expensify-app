@@ -13,15 +13,70 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-// Setup data sub -> bob is a Software dev at amazon.
-// change the data and make it reprints 
 
-database.ref().on('value', (snapshot) => {
-    const val = snapshot.val();
-    console.log(`${val.name} is a ${val.job.title} at ${val.job.company}.`);
-}, (e) => {
-        console.log('Error with data fetching', e);
+// child_removed
+database.ref('expenses').on('child_removed',(snapshot) => {
+    console.log(snapshot.key, snapshot.val());
 });
+
+//  child_changed
+database.ref('expenses').on('child_changed',(snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+});
+
+//  child_added
+database.ref('expenses').on('child_added',(snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+});
+
+// database.ref('expenses')
+// .on('value', (snapshot) => {
+//     const expenses = [];
+//     snapshot.forEach((childSnapshot) => {
+//         expenses.push({
+//             id: childSnapshot.key,
+//             ...childSnapshot.val()
+//         });
+//     });
+//     console.log(expenses);
+// });
+
+// database.ref()
+// .once('value')
+// .then((snapshot) => {
+//     const expenses = [];
+//     snapshot.forEach((childSnapshot) => {
+//         expenses.push({
+//             id: childSnapshot.key,
+//             ...childSnapshot.val()
+//         });
+//     });
+//     console.log(expenses);
+// });
+// database.ref('expenses').push({
+//     description: 'BUU',
+//     note: 'Miau',
+//     amount: 59,
+//     createdAt: 40057
+// });
+
+// database.ref('notes/-LY4kRSTWIXkgOmoSy3V').remove();
+
+// database.ref('notes/-LY4kRSTWIXkgOmoSy3V').update({
+//     body: 'Buy cup'
+// });
+
+// database.ref('notes').push({
+//     title: 'To Do oo',
+//     body:'Go sing'
+// })
+
+// database.ref().on('value', (snapshot) => {
+//     const val = snapshot.val();
+//     console.log(`${val.name} is a ${val.job.title} at ${val.job.company}.`);
+// }, (e) => {
+//         console.log('Error with data fetching', e);
+// });
 
 // const onValueChange = database.ref().on('value', (snapshot) => {
 //     console.log(snapshot.val());
