@@ -30,6 +30,7 @@
     "enzyme-to-json": "^3.3.5",
     "express": "^4.16.4",
     "firebase": "^5.8.2",
+    "history": "^4.7.2",
     "mini-css-extract-plugin": "^0.5.0",
     "moment": "^2.24.0",
     "node-sass": "^4.11.0",
