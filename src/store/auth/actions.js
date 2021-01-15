@@ -1,9 +1,9 @@
-import { firebase, googleAuthProvider } from '../firebase/firebase';
+import { firebase, googleAuthProvider } from '../../firebase/firebase';
 import types from "./types";
 
 export const login = uid =>({ 
     type: types.LOGIN,
-    payload: uid
+    payload: { uid }
 });
 
 export const startLogin = () => {

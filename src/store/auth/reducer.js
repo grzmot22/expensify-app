@@ -5,16 +5,19 @@ const initialState = {
   };
   
   export default function authReducer(state = initialState, action) {
+
     switch (action.type) {
       case types.LOGIN:
-                  return {
-                      uid: action.payload.uid,
+          return {
+              ...state,
+              uid: action.payload.uid
+            };
+            case types.LOGOUT:
+                return { 
+                    ...state,
+                    uid: ""
                   };
-              case types.LOGOUT:
-                  return { ...state,
-                      uid: ""
-                  };
-              default: 
+                  default: 
                   return state;
     }
   }

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import 'react-dates/initialize';
 import { DateRangePicker } from 'react-dates';
-import { setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate} from '../actions/filters';
+import { setEndDate, setStartDate, setTextFilter, sortByAmount, sortByDate } from "../store/filters/actions";
 
 export class ExpenseListFilters extends React.Component {
     state = {
@@ -55,6 +55,8 @@ export class ExpenseListFilters extends React.Component {
                         <DateRangePicker
                         startDate={this.props.filters.startDate}
                         endDate={this.props.filters.endDate}
+                        startDateId={this.props.filters.startDate.toString()}
+                        endDateId={this.props.filters.startDate.toString()}
                         onDatesChange={this.onDatesChange}
                         focusedInput={this.state.calendarFocused}
                         onFocusChange={this.onFocusChange}
@@ -74,10 +76,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-setTextFilter: (test) => dispatch(setTextFilter(test)),
+setTextFilter: text => dispatch(setTextFilter(text)),
 sortByDate: () => dispatch(sortByDate()),
 sortByAmount: () => dispatch(sortByAmount()),
-setStartDate: (startDate) => dispatch(setStartDate(startDate)),
-setEndDate: (endDate) => dispatch(setEndDate(endDate))
+setStartDate: startDate => dispatch(setStartDate(startDate)),
+setEndDate: endDate => dispatch(setEndDate(endDate))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(ExpenseListFilters);

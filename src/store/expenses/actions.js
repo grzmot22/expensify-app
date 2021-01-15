@@ -2,11 +2,6 @@
 import types from "./types";
 import database from '../../firebase/firebase'
 
-export const removeExpense = (id) => ({
-  type: types.REMOVE_EXPENSE,
-  payload: { id }
-});
-
 export const addExpense = (expenseData) => {
   const addExpenseSuccess = (expense) => ({
     type: types.ADD_EXPENSE,
@@ -16,7 +11,7 @@ export const addExpense = (expenseData) => {
 
   return async (dispatch, getState) => {
 
-    const uid = getState().auth.userId;
+    const uid = getState().auth.uid;
       const {
         description = '',
         note = '',
@@ -34,37 +29,45 @@ export const addExpense = (expenseData) => {
     };
   };
 
-export const startRemoveExpense = ({ id } = {}) => {
+export const removeExpense = ({ id } = {}) => {
+   const removeExpenseSuccess = (id) => ({
+    type: types.REMOVE_EXPENSE,
+    payload: { id }
+  });
+
   return (dispatch, getState) => {
-    const uid = getState().auth.userId;
+    const uid = getState().auth.uid;
     return database.ref(`users/${uid}/expenses/${id}`).remove().then(() => {
-      dispatch(removeExpense({ id }));
+      dispatch(removeExpenseSuccess({ id }));
     });   
   };
 };
 
-export const editExpense = (id, updates) => ({
-  type: types.EDIT_EXPENSE,
-  payload:{id, updates}
-});
 
-export const startEditExpense = (id, updates) =>{
+export const editExpense = (id, updates) =>{
+  const editExpenseSuccess = (id, updates) => ({
+    type: types.EDIT_EXPENSE,
+    payload: { id, updates}
+  });
+  
 return (dispatch, getState) => {
-  const uid = getState().auth.userId;
+  const uid = getState().auth.uid;
   return database.ref(`users/${uid}/expenses/${id}`).update(updates).then(() =>{
-    dispatch(editExpense(id, updates));
+    dispatch(editExpenseSuccess(id, updates));
   });
 } ;
 };
 
-export const setExpenses = (expenses) => ({
-  type: types.SET_EXPENSES,
-  payload:{ expenses }
-});
 
-export const startSetExpenses = () => {
+
+export const setExpenses = () => {
+   const setExpensesSuccess = (expenses) => ({
+    type: types.SET_EXPENSES,
+    payload: { expenses }
+  });
+
  return (dispatch, getState) => {
-  const uid = getState().auth.userId;
+  const uid = getState().auth.uid;
   return database.ref(`users/${uid}/expenses`).once('value').then((snapshot) => {
     const expenses = [];
 
@@ -74,7 +77,7 @@ export const startSetExpenses = () => {
         ...childSnapshot.val()
       });
     });
-    dispatch(setExpenses(expenses));
+    dispatch(setExpensesSuccess(expenses));
   });
 };
 };

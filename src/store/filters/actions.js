@@ -1,8 +1,8 @@
 import types from "./types";
 
  export const setTextFilter = (text = "") => ({
-  type:types.SET_TEXT_FILTER,
-  payload: {text}
+  type: types.SET_TEXT_FILTER,
+  payload: { text }
 });
 
 // SORT_BY_DATE
@@ -17,11 +17,11 @@ export const sortByAmount = () => ({
 // SET_START_DATE
 export const setStartDate = (startDate) => ({
   type: types.SET_START_DATE,
-  payload: startDate
+  payload: { startDate }
 
 });
 // SET_END_DATE
 export const setEndDate = (endDate) => ({
   type: types.SET_END_DATE,
-  payload: endDate
+  payload: { endDate }
 });
