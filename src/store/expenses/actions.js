@@ -1,5 +1,5 @@
 import uuid from 'uuid';
-import database from '../firebase/firebase'
+import database from '../../firebase/firebase'
 
 // ADD_EXPENSE
 export const addExpense = (expense) => ({
