@@ -1,12 +1,22 @@
-export default (state = {}, action) => {
+import types from "./types";
+
+const initialState = {
+    uid: ""
+  };
+  
+  export default function authReducer(state = initialState, action) {
     switch (action.type) {
-        case 'LOGIN':
-            return {
-                uid: action.uid
-            };
-        case 'LOGOUT':
-            return {};
-        default: 
-            return state;
-    };
-};
+      case types.LOGIN:
+                  return {
+                      uid: action.payload.uid,
+                  };
+              case types.LOGOUT:
+                  return { ...state,
+                      uid: ""
+                  };
+              default: 
+                  return state;
+    }
+  }
+  
+
