@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addExpense } from "../store/expenses/actions";
 import ExpenseForm from './ExpenseForm';
+import styled from "styled-components";
+import config from "../styles/stylesConfig";
 
 export class AddExpensePage extends React.Component {
     onSubmit = (expense) => {
@@ -11,16 +13,16 @@ export class AddExpensePage extends React.Component {
     render() {
         return(
             <div>
-                <div className="page-header">
-                    <div className="content-container">
-                        <h1 className="page-header__title">Add Expense</h1>
-                    </div>
-                </div>
-                <div className="content-container">
+                <PageHeader>
+                    <ContentContainer >
+                        <PageTitle>Add Expense</PageTitle>
+                    </ContentContainer>
+                </PageHeader>
+                <ContentContainer>
                     <ExpenseForm 
                     onSubmit={this.onSubmit}
                     />
-                </div>
+                </ContentContainer>
             </div>
         );
     }
@@ -31,3 +33,23 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(undefined, mapDispatchToProps)(AddExpensePage);
+
+const PageHeader = styled.header`
+    background: ${config.COLORS.OFF_WHITE};
+    margin-bottom: ${config.SPACING.L_SIZE};
+    padding: ${config.SPACING.L_SIZE} 0;
+`;
+
+const ContentContainer = styled.div`
+    margin: 0 auto;
+    padding: 0 ${config.SPACING.M_SIZE};
+    max-width: 80rem;
+`;
+
+const PageTitle = styled.h1`
+    font-weight: 300;
+    margin: 0;
+    span {
+        font-weight: 700;
+    }
+`;

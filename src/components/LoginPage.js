@@ -39,7 +39,7 @@ const Box = styled.div`
 `;
 
 const Title = styled.h1`
-    margin: 0 0 $m-size 0;
+    margin: 0 0 ${config.SPACING.M_SIZE} 0;
     line-height: 1;
 
 `;

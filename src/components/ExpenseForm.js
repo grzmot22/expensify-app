@@ -2,7 +2,8 @@ import React from 'react';
 import moment from 'moment';
 import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
-
+import styled from "styled-components";
+import config from "../styles/stylesConfig";
 
 export default class ExpenseForm extends React.Component {
     constructor(props) {
@@ -22,28 +23,33 @@ export default class ExpenseForm extends React.Component {
         const description = e.target.value;
         this.setState(() =>({ description }));
     };
+
     onNoteChange = (e) => {
         const note = e.target.value;
         this.setState(() => ({ note }));
     };
+
     onAmountChange = (e) => {
         const amount = e.target.value;
         if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
             this.setState(() => ({ amount }));
         }
     }
+
     onDateChange = (createdAt) => {
         if (createdAt) {
             this.setState(() => ({ createdAt }))
         }
     };
+
     onFocusChange = ({ focused }) => {
         this.setState(() => ({ calendarFocused: focused }))
     };
+
     onSubmit = (e) => {
         e.preventDefault();
         if (!this.state.description || !this.state.amount) {
-            this.setState(() =>({error: 'Please provide decription and amount.'}))
+            this.setState(() =>({error: 'Please provide description and amount.'}))
         } else {
             this.setState(() =>({error: ''}))
             this.props.onSubmit({
@@ -54,22 +60,21 @@ export default class ExpenseForm extends React.Component {
             });
         }
     }
+    
     render() {
         return (        
-            <form className="form" onSubmit={this.onSubmit}>
-            {this.state.error && <p className="form__error">{this.state.error}</p>}
-            <input
+            <FormContainer onSubmit={this.onSubmit}>
+            {this.state.error && <FormError >{this.state.error}</FormError>}
+            <TextInput
               type="text"
               placeholder="Description"
               autoFocus
-              className="text-input"
               value={this.state.description}
               onChange={this.onDescriptionChange}
             />
-            <input
+            <TextInput
               type="text"
               placeholder="Amount"
-              className="text-input"
               value={this.state.amount}
               onChange={this.onAmountChange}
             />
@@ -81,17 +86,57 @@ export default class ExpenseForm extends React.Component {
               numberOfMonths={1}
               isOutsideRange={() => false}
             />
-            <textarea
+            <TextArea
               placeholder="Add a note for your expense (optional)"
-              className="textarea"
               value={this.state.note}
               onChange={this.onNoteChange}
             >
-            </textarea>
+            </TextArea>
             <div>
-              <button className="button">Save Expense</button>
+              <Button>Save Expense</Button>
             </div>
-          </form>
+          </FormContainer>
         )
     }
 }
+
+const FormContainer = styled.form`
+    display: flex;
+    flex-direction: column;
+    > * {
+        margin-bottom: ${config.SPACING.M_SIZE};
+    }
+`;
+const FormError = styled.p`
+    margin: 0 0 ${config.SPACING.M_SIZE} 0;
+    font-style: italic;
+`;
+
+
+const TextInput = styled.input`
+     border: 1px solid #cacccd;
+    height: 50px;
+    font-size: ${config.FONTS_SIZE.LARGE};
+    font-weight: 300;
+    padding: ${config.SPACING.S_SIZE};
+`;
+
+const TextArea = styled.textarea`
+    border: 1px solid #cacccd;
+    height: 10rem;
+    font-size: ${config.FONTS_SIZE.LARGE};
+    font-weight: 300;
+    padding: ${config.SPACING.S_SIZE};
+`;
+
+const Button = styled.button`
+    color: white;
+    background: ${config.COLORS.BLUE};
+    border: none;
+    display: inline-block;
+    font-size: ${config.FONTS_SIZE.LARGE};
+    font-weight: 300;
+    line-height: 1;
+    padding: ${config.SPACING.S_SIZE};
+    text-decoration: none; 
+`;

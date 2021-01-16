@@ -8,7 +8,6 @@ import { setExpenses } from "./store/expenses/actions";
 import { login, logout } from "./store/auth/actions";
 import 'react-dates/lib/css/_datepicker.css';
 import 'normalize.css/normalize.css';
-import './styles/styles.scss';
 import { firebase } from'./firebase/firebase';
 import LoadingPage from './components/LoadingPage'
 
