@@ -5,7 +5,7 @@ import expensesReducer from "./expenses/reducer";
 import filtersReducer from "./filters/reducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-export default () => {
+ const store = () => {
     const store = createStore(
         combineReducers({
           expenses: expensesReducer,
@@ -18,4 +18,4 @@ export default () => {
       return store;
 }
 
-
+export default store;
