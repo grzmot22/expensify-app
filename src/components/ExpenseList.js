@@ -2,28 +2,32 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ExpenseListItem from './ExpenseListItem';
 import selectExpenses from '../selectors/expenses';
+import styled from "styled-components";
+import config from "../styles/stylesConfig";
+import { darken } from 'polished';
+import ContentContainer from "./ContentContainer";
 
 export const ExpenseList = (props) => (
-    <div className="content-cotainer">
-        <div className="list-header">
-            <div className="show-for-mobile">Expenses</div>
-            <div className="show-for-desktop">Expense</div>
-            <div className="show-for-desktop">Amount</div>
-        </div>
-        <div className="list-body">
+    <ContentContainer>
+        <ListHeader>
+            <HeaderMobile>Expenses</HeaderMobile>
+            <HeaderDesktop>Expense</HeaderDesktop>
+            <HeaderDesktop>Amount</HeaderDesktop>
+        </ListHeader>
+        <ListBody>
         {
             props.expenses.length === 0 ? (
-                <div className="list-item--message">
+                <ListMessage>
                   <span>No expenses</span>  
-                </div>
+                </ListMessage>
             ) : (
                 props.expenses.map((expense) => {
                     return <ExpenseListItem key={expense.id}{...expense}/>
                 }) 
             )
         }
-        </div>           
-    </div>
+        </ListBody>           
+    </ContentContainer>
 ) ;
 
 const mapStateToProps = (state) => {
@@ -33,3 +37,58 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(ExpenseList);
+
+const ListHeader = styled.div`
+    background: ${config.COLORS.OFF_WHITE};
+    border: 1px solid ${darken(0.07, "#f7f7f7")};
+    color: ${config.COLORS.GREY};
+    display: flex;
+    justify-content: space-between;
+    padding: ${config.SPACING.S_SIZE} ${config.SPACING.M_SIZE};
+`;
+
+const ListBody = styled.div`
+    margin-bottom: ${config.SPACING.M_SIZE};
+  @media (min-width: ${config.SPACING.DESKTOP_BREAKPOINT}) {
+    margin-bottom: ${config.SPACING.L_SIZE};
+  }
+`;
+
+const ListMessage = styled.div`
+    border: 1px solid ${darken(0.07, "#f7f7f7")};
+    border-top: none;
+    color: ${config.COLORS.DARK_GREY};
+    display: flex;
+    flex-direction: column;
+    padding: ${config.SPACING.S_SIZE};
+    text-decoration: none;
+    transition: background .3s ease;
+    
+    @media (min-width: ${config.SPACING.DESKTOP_BREAKPOINT}) {
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: ${config.SPACING.M_SIZE};
+    }
+
+    align-items: center;
+    color: ${config.COLORS.GREY};
+    justify-content: center;
+    padding: ${config.SPACING.M_SIZE};
+    &:hover {
+      background: none;
+    }
+`;
+
+const HeaderMobile = styled.div`
+    @media (min-width: ${config.SPACING.DESKTOP_BREAKPOINT}) {
+      display: none;
+    }
+`;
+
+const HeaderDesktop = styled.div`
+    @media (max-width: ${config.SPACING.DESKTOP_BREAKPOINT}) {
+      display: none;
+    }
+`;
+

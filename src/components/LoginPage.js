@@ -1,15 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { startLogin } from '../actions/auth';
+import { startLogin } from "../store/auth/actions";
+import styled from "styled-components";
+import config from "../styles/stylesConfig";
+import Button from "./Button";
 
 export const LoginPage = ({ startLogin }) => (
-    <div className="box-layout">
-        <div className="box-layout__box">
-        <h1 className="box-layout__title">Expensify</h1>
-        <p>It's time to get your expenses under control.</p>
-        <button className="button" onClick={startLogin}>Login with Google</button>
-        </div>
-    </div>
+    <Container>
+        <Box>
+        <Title>Expensify</Title>
+        <Text>It's time to get your expenses under control.</Text>
+        <Button onClick={startLogin}>Login with Google</Button>
+        </Box>
+    </Container>
 );
 
 const mapDispatchToProps = (dispatch) => ({
@@ -17,3 +20,30 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(undefined, mapDispatchToProps)(LoginPage);
+
+const Container = styled.div`
+    align-items: center;
+    background: url('/images/bg.jpg');
+    background-size: cover;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    width: 100vw;
+`;
+
+const Box = styled.div`
+    background: fade-out(white,  .15);
+    border-radius: 3px;
+    padding:  ${config.SPACING.L_SIZE} ${config.SPACING.M_SIZE};
+    text-align: center;
+    width: 25rem;
+`;
+
+const Title = styled.h1`
+    margin: 0 0 ${config.SPACING.M_SIZE} 0;
+    line-height: 1;
+
+`;
+
+const Text = styled.p``;
+
