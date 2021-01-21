@@ -4,7 +4,7 @@ import moment from 'moment';
 import numeral from 'numeral';
 import styled from "styled-components";
 import config from "../styles/stylesConfig";
-
+import { darken } from 'polished';
 
 const ExpenseListItem = ({ id, description, amount, createdAt })  => (
     <ListItem to={`/edit/${id}`}>
@@ -19,7 +19,7 @@ const ExpenseListItem = ({ id, description, amount, createdAt })  => (
 export default ExpenseListItem;
 
 const ListItem = styled(Link)`
-    border: 1px solid darken(${config.COLORS.OFF_WHITE}, 7%);
+    border: 1px solid ${darken(0.07, "#f7f7f7")};
     border-top: none;
     color: ${config.COLORS.DARK_GREY};
     display: flex;
@@ -30,6 +30,7 @@ const ListItem = styled(Link)`
     &:hover {
       background: ${config.COLORS.OFF_WHITE};
     }
+    
     @media (min-width: ${config.SPACING.DESKTOP_BREAKPOINT}) {
       align-items: center;
       flex-direction: row;

@@ -60,5 +60,13 @@ const ContentContainerActions = styled.div`
 `;
 
 const Button = styled(Link)`
-
+    color: white;
+    background: ${config.COLORS.BLUE};
+    border: none;
+    display: inline-block;
+    font-size: ${config.FONTS_SIZE.LARGE};
+    font-weight: 300;
+    line-height: 1;
+    padding: ${config.SPACING.S_SIZE};
+    text-decoration: none; 
 `;

@@ -7,7 +7,7 @@ import config from "../styles/stylesConfig";
 
 export const Header = ({ startLogout }) => (
     <Container> 
-            <HeaderContainer >
+        <HeaderContainer>
             <HeaderContent>
                 <HeaderTitle to="/dashboard" >
                     <h1>Expensify</h1>
@@ -38,7 +38,7 @@ const HeaderContent = styled.div`
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding: ${config.SPACING.L_SIZE} 0;
+    padding: ${config.SPACING.S_SIZE} 0;
 `;
 
 const HeaderTitle = styled(Link)`

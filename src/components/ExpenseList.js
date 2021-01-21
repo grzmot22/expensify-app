@@ -4,6 +4,7 @@ import ExpenseListItem from './ExpenseListItem';
 import selectExpenses from '../selectors/expenses';
 import styled from "styled-components";
 import config from "../styles/stylesConfig";
+import { darken } from 'polished';
 
 export const ExpenseList = (props) => (
     <ContentContainer>
@@ -45,7 +46,7 @@ const ContentContainer = styled.div`
 `;
 const ListHeader = styled.div`
     background: ${config.COLORS.OFF_WHITE};
-    border: 1px solid darken(${config.COLORS.OFF_WHITE}, 7%);
+    border: 1px solid ${darken(0.07, "#f7f7f7")};
     color: ${config.COLORS.GREY};
     display: flex;
     justify-content: space-between;
@@ -53,19 +54,35 @@ const ListHeader = styled.div`
 `;
 
 const ListBody = styled.div`
+    margin-bottom: ${config.SPACING.M_SIZE};
+  @media (min-width: ${config.SPACING.DESKTOP_BREAKPOINT}) {
+    margin-bottom: ${config.SPACING.L_SIZE};
+  }
+`;
+
+const ListMessage = styled.div`
+    border: 1px solid ${darken(0.07, "#f7f7f7")};
+    border-top: none;
+    color: ${config.COLORS.DARK_GREY};
+    display: flex;
+    flex-direction: column;
+    padding: ${config.SPACING.S_SIZE};
+    text-decoration: none;
+    transition: background .3s ease;
+    
+    @media (min-width: ${config.SPACING.DESKTOP_BREAKPOINT}) {
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: ${config.SPACING.M_SIZE};
+    }
+
     align-items: center;
     color: ${config.COLORS.GREY};
     justify-content: center;
     padding: ${config.SPACING.M_SIZE};
     &:hover {
       background: none;
-    }
-`;
-
-const ListMessage = styled.div`
-     margin-bottom: ${config.SPACING.M_SIZE};
-    @media (min-width: ${config.SPACING.DESKTOP_BREAKPOINT}) {
-      margin-bottom: ${config.SPACING.L_SIZE};
     }
 `;
 
@@ -76,7 +93,7 @@ const HeaderMobile = styled.div`
 `;
 
 const HeaderDesktop = styled.div`
-    @media (max-width: ${config.SPACING.DESKTOP_BREAKPOINT} - .01rem) {
+    @media (max-width: ${config.SPACING.DESKTOP_BREAKPOINT}) {
       display: none;
     }
 `;
