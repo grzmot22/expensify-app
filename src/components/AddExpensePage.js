@@ -4,6 +4,7 @@ import { addExpense } from "../store/expenses/actions";
 import ExpenseForm from './ExpenseForm';
 import styled from "styled-components";
 import config from "../styles/stylesConfig";
+import ContentContainer from "./ContentContainer";
 
 export class AddExpensePage extends React.Component {
     onSubmit = (expense) => {
@@ -14,7 +15,7 @@ export class AddExpensePage extends React.Component {
         return(
             <div>
                 <PageHeader>
-                    <ContentContainer >
+                    <ContentContainer>
                         <PageTitle>Add Expense</PageTitle>
                     </ContentContainer>
                 </PageHeader>
@@ -38,12 +39,6 @@ const PageHeader = styled.header`
     background: ${config.COLORS.OFF_WHITE};
     margin-bottom: ${config.SPACING.L_SIZE};
     padding: ${config.SPACING.L_SIZE} 0;
-`;
-
-const ContentContainer = styled.div`
-    margin: 0 auto;
-    padding: 0 ${config.SPACING.M_SIZE};
-    max-width: 80rem;
 `;
 
 const PageTitle = styled.h1`

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { startLogout } from "../store/auth/actions";
 import styled from "styled-components";
 import config from "../styles/stylesConfig";
+import Button from "./Button";
 
 export const Header = ({ startLogout }) => (
     <Container> 
@@ -12,7 +13,7 @@ export const Header = ({ startLogout }) => (
                 <HeaderTitle to="/dashboard" >
                     <h1>Expensify</h1>
                 </HeaderTitle>
-                <Button  onClick={startLogout}>Logout</Button>
+                <Button  background={"none"} onClick={startLogout}>Logout</Button>
             </HeaderContent>
         </HeaderContainer> 
     </Container>
@@ -47,16 +48,4 @@ const HeaderTitle = styled(Link)`
     h1 {
         margin: 0;
     }
-`;
-
-const Button = styled.button`
-    color: white;
-    background: none;
-    border: none;
-    display: inline-block;
-    font-size: ${config.FONTS_SIZE.LARGE};
-    font-weight: 300;
-    line-height: 1;
-    padding: ${config.SPACING.S_SIZE};
-    text-decoration: none;   
 `;

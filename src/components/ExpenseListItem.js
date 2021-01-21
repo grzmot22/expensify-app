@@ -38,6 +38,7 @@ const ListItem = styled(Link)`
       padding: ${config.SPACING.M_SIZE};
     }
 `;
+
 const ListItemTitle = styled.h3`
     margin: 0;
     word-break: break-all;

@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ExpenseForm from './ExpenseForm';
-import { editExpense, removeExpense } from "../store/expenses/actions";
 import styled from "styled-components";
+import ExpenseForm from './ExpenseForm';
+import ContentContainer from "./ContentContainer";
+import Button from "./Button";
+import { editExpense, removeExpense } from "../store/expenses/actions";
 import config from "../styles/stylesConfig";
 
 
@@ -19,18 +21,20 @@ export class EditExpensePage extends React.Component {
 
     render() {
         return(
-            <PageHeader>
-                <ContentContainer>
+            <div>
+                <PageHeader>
                     <ContentContainer>
                         <PageTitle>Edit Expense</PageTitle>
                     </ContentContainer>
+                </PageHeader>
+                <ContentContainer>
                     <ExpenseForm
-                        expense={this.props.expense}
-                        onSubmit={this.onSubmit}
-                        />
-                    <Button onClick={this.onRemove} >Remove Expense</Button>
+                    expense={this.props.expense}
+                    onSubmit={this.onSubmit}
+                    />
+                    <Button background={"#888888"} onClick={this.onRemove} >Remove Expense</Button>
                 </ContentContainer>
-           </PageHeader>
+            </div>
         )
     }
 
@@ -53,12 +57,6 @@ const PageHeader = styled.header`
     padding: ${config.SPACING.L_SIZE} 0;
 `;
 
-const ContentContainer = styled.div`
-    margin: 0 auto;
-    padding: 0 ${config.SPACING.M_SIZE};
-    max-width: 80rem;
-`;
-
 const PageTitle = styled.h1`
     font-weight: 300;
     margin: 0;
@@ -67,14 +65,3 @@ const PageTitle = styled.h1`
     }
 `;
 
-const Button = styled.button`
-    color: white;
-    background: #888888;
-    border: none;
-    display: inline-block;
-    font-size: ${config.FONTS_SIZE.LARGE};
-    font-weight: 300;
-    line-height: 1;
-    padding: ${config.SPACING.S_SIZE};
-    text-decoration: none; 
-`;

@@ -6,6 +6,7 @@ import { DateRangePicker } from 'react-dates';
 import { setEndDate, setStartDate, setTextFilter, sortByAmount, sortByDate } from "../store/filters/actions";
 import styled from "styled-components";
 import config from "../styles/stylesConfig";
+import ContentContainer from "./ContentContainer";
 
 export class ExpenseListFilters extends React.Component {
     state = {
@@ -90,11 +91,6 @@ setEndDate: endDate => dispatch(setEndDate(endDate))
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExpenseListFilters);
 
-const ContentContainer = styled.div`
-    margin: 0 auto;
-    padding: 0 ${config.SPACING.M_SIZE};
-    max-width: 80rem;
-`;
 const InputGroup = styled.div`
     display: flex;
     flex-direction: column;

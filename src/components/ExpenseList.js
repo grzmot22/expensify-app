@@ -5,6 +5,7 @@ import selectExpenses from '../selectors/expenses';
 import styled from "styled-components";
 import config from "../styles/stylesConfig";
 import { darken } from 'polished';
+import ContentContainer from "./ContentContainer";
 
 export const ExpenseList = (props) => (
     <ContentContainer>
@@ -37,13 +38,6 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps)(ExpenseList);
 
-
-
-const ContentContainer = styled.div`
-    margin: 0 auto;
-    padding: 0 ${config.SPACING.M_SIZE};
-    max-width: 80rem;
-`;
 const ListHeader = styled.div`
     background: ${config.COLORS.OFF_WHITE};
     border: 1px solid ${darken(0.07, "#f7f7f7")};

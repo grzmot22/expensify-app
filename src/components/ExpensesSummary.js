@@ -6,6 +6,7 @@ import selectExpenses from '../selectors/expenses';
 import selectExpensesTotal from '../selectors/expenses-total';
 import styled from "styled-components";
 import config from "../styles/stylesConfig";
+import ContentContainer from "./ContentContainer";
 
 export const ExpensesSummary = ({ expenseCount, expensesTotal }) => {
 
@@ -41,11 +42,6 @@ const PageHeader = styled.div`
     padding: ${config.SPACING.L_SIZE} 0;
 `;
 
-const ContentContainer = styled.div`
-    margin: 0 auto;
-    padding: 0 ${config.SPACING.M_SIZE};
-    max-width: 80rem;
-`;
 
 const ContentContainerTitle = styled.h1`
     font-weight: 300;

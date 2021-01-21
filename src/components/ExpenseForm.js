@@ -4,6 +4,7 @@ import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
 import styled from "styled-components";
 import config from "../styles/stylesConfig";
+import Button from "./Button";
 
 export default class ExpenseForm extends React.Component {
     constructor(props) {
@@ -107,6 +108,7 @@ const FormContainer = styled.form`
         margin-bottom: ${config.SPACING.M_SIZE};
     }
 `;
+
 const FormError = styled.p`
     margin: 0 0 ${config.SPACING.M_SIZE} 0;
     font-style: italic;
@@ -129,14 +131,3 @@ const TextArea = styled.textarea`
     padding: ${config.SPACING.S_SIZE};
 `;
 
-const Button = styled.button`
-    color: white;
-    background: ${config.COLORS.BLUE};
-    border: none;
-    display: inline-block;
-    font-size: ${config.FONTS_SIZE.LARGE};
-    font-weight: 300;
-    line-height: 1;
-    padding: ${config.SPACING.S_SIZE};
-    text-decoration: none; 
-`;

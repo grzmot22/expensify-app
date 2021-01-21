@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { startLogin } from "../store/auth/actions";
 import styled from "styled-components";
 import config from "../styles/stylesConfig";
+import Button from "./Button";
 
 export const LoginPage = ({ startLogin }) => (
     <Container>
@@ -46,14 +47,3 @@ const Title = styled.h1`
 
 const Text = styled.p``;
 
-const Button = styled.button`
-    color: white;
-    background: ${config.COLORS.BLUE};
-    border: none;
-    display: inline-block;
-    font-size: ${config.FONTS_SIZE.LARGE};
-    font-weight: 300;
-    line-height: 1;
-    padding: ${config.SPACING.L_SIZE};
-    text-decoration: none; 
-`;
