@@ -1,4 +1,5 @@
-import { login, logout } from '../../actions/auth';
+import { login, logout } from "../../../store/auth/actions";
+
 
 test('should generate login action object', () => {
     const uid = 'blabla2'

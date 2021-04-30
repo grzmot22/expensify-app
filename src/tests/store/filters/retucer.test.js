@@ -1,7 +1,7 @@
 import moment from 'moment';
-import filterReducer from '../../reducers/filters'
+import filterReducer from '../../../store/filters/reducer';
 
-test('should setup deafult filter values', () => {
+test('should setup default filter values', () => {
   const state = filterReducer(undefined, { type: '@@INIT' });
   expect(state).toEqual({
       text: '',

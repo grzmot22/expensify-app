@@ -1,11 +1,11 @@
-import authReducucer from '../../reducers/auth';
+import authReducer from '../../../store/auth/reducer';
 
 test('should set uid for login', () => {
     const action = {
         type: 'LOGIN',
         uid: '123h4'
     };
-    const state = authReducucer({}, action);
+    const state = authReducer({}, action);
     expect(state.uid).toEqual(action.uid);
   });
 
@@ -13,6 +13,6 @@ test('should set uid for login', () => {
     const action = {
         type: 'LOGOUT'
     };
-    const state = authReducucer({uid: 'blablas'}, action);
+    const state = authReducer({uid: 'blablas'}, action);
     expect(state).toEqual({});
   });
