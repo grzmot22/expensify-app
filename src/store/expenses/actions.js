@@ -16,7 +16,6 @@ export const addExpense = (expenseData) => {
       createdAt = 0,
     } = expenseData;
     const expense = { description, note, amount, createdAt };
-    console.log('hmm', expense);
     return database
       .ref(`users/${uid}/expenses`)
       .push(expense)
