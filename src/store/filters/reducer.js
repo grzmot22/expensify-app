@@ -1,11 +1,11 @@
 import moment from 'moment';
-import types from "./types";
+import types from './types';
 
 const initialState = {
   text: '',
   sortBy: 'date',
   startDate: moment().startOf('month'),
-  endDate: moment().endOf('month')
+  endDate: moment().endOf('month'),
 };
 
 export default function filterReducer(state = initialState, action) {
@@ -13,27 +13,27 @@ export default function filterReducer(state = initialState, action) {
     case types.SET_TEXT_FILTER:
       return {
         ...state,
-        text: action.payload.text
+        text: action.payload.text,
       };
     case types.SORT_BY_DATE:
       return {
         ...state,
-        sortBy: 'date'
+        sortBy: 'date',
       };
     case types.SORT_BY_AMOUNT:
       return {
         ...state,
-        sortBy: 'amount'
+        sortBy: 'amount',
       };
     case types.SET_START_DATE:
       return {
         ...state,
-        startDate: action.payload.startDate
+        startDate: action.payload.startDate,
       };
     case types.SET_END_DATE:
       return {
         ...state,
-        endDate: action.payload.endDate 
+        endDate: action.payload.endDate,
       };
     default:
       return state;

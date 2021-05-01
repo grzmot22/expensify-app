@@ -1,6 +1,6 @@
 const types = {
-  LOGIN: "LOGIN",
-  LOGOUT: "LOGOUT"
+  LOGIN: 'LOGIN',
+  LOGOUT: 'LOGOUT',
 };
 
 export default types;
