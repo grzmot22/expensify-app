@@ -32,7 +32,7 @@ const Container = styled.div`
 `;
 
 const Box = styled.div`
-  background: fade-out(white, 0.15);
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 3px;
   padding: ${config.SPACING.L_SIZE} ${config.SPACING.M_SIZE};
   text-align: center;
