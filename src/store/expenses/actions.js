@@ -30,7 +30,7 @@ export const addExpense = (expenseData) => {
   };
 };
 
-export const removeExpense = ({ id } = {}) => {
+export const removeExpense = (id) => {
   const removeExpenseSuccess = (id) => ({
     type: types.REMOVE_EXPENSE,
     payload: { id },
@@ -42,7 +42,7 @@ export const removeExpense = ({ id } = {}) => {
       .ref(`users/${uid}/expenses/${id}`)
       .remove()
       .then(() => {
-        dispatch(removeExpenseSuccess({ id }));
+        dispatch(removeExpenseSuccess(id));
       });
   };
 };

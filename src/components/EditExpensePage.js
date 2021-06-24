@@ -10,7 +10,7 @@ import config from '../styles/stylesConfig';
 export const EditExpensePage = ({ match, history }) => {
   const dispatch = useDispatch();
   const startEditExpense = (id, expense) => dispatch(editExpense(id, expense));
-  const startRemoveExpense = (data) => dispatch(removeExpense(data));
+  const startRemoveExpense = (id) => dispatch(removeExpense(id));
   const expense = useSelector((state) =>
     state.expenses.find((expense) => expense.id === match.params.id),
   );
@@ -21,7 +21,7 @@ export const EditExpensePage = ({ match, history }) => {
   };
 
   const onRemove = () => {
-    startRemoveExpense({ id: expense.id });
+    startRemoveExpense(expense.id);
     history.push('/');
   };
 
