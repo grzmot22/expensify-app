@@ -1,31 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { startLogout } from '../store/auth/actions';
 import styled from 'styled-components';
 import config from '../styles/stylesConfig';
 import Button from './Button';
 
-export const Header = ({ startLogout }) => (
-  <Container>
-    <HeaderContainer>
-      <HeaderContent>
-        <HeaderTitle to="/dashboard">
-          <h1>Expensify</h1>
-        </HeaderTitle>
-        <Button background={'none'} onClick={startLogout}>
-          Logout
-        </Button>
-      </HeaderContent>
-    </HeaderContainer>
-  </Container>
-);
+export const Header = () => {
+  const dispatch = useDispatch();
 
-const mapDispatchToProps = (dispatch) => ({
-  startLogout: () => dispatch(startLogout()),
-});
+  return (
+    <Container>
+      <HeaderContainer>
+        <HeaderContent>
+          <HeaderTitle to="/dashboard">
+            <h1>Expensify</h1>
+          </HeaderTitle>
+          <Button background={'none'} onClick={() => dispatch(startLogout())}>
+            Logout
+          </Button>
+        </HeaderContent>
+      </HeaderContainer>
+    </Container>
+  );
+};
 
-export default connect(undefined, mapDispatchToProps)(Header);
+export default Header;
 
 const Container = styled.header`
   background: ${config.COLORS.DARK_BLUE};

@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ExpenseListItem from './ExpenseListItem';
 import selectExpenses from '../selectors/expenses';
 import styled from 'styled-components';
@@ -7,34 +7,34 @@ import config from '../styles/stylesConfig';
 import { darken } from 'polished';
 import ContentContainer from './ContentContainer';
 
-export const ExpenseList = (props) => (
-  <ContentContainer>
-    <ListHeader>
-      <HeaderMobile>Expenses</HeaderMobile>
-      <HeaderDesktop>Expense</HeaderDesktop>
-      <HeaderDesktop>Amount</HeaderDesktop>
-    </ListHeader>
-    <ListBody>
-      {props.expenses.length === 0 ? (
-        <ListMessage>
-          <span>No expenses</span>
-        </ListMessage>
-      ) : (
-        props.expenses.map((expense) => {
-          return <ExpenseListItem key={expense.id} {...expense} />;
-        })
-      )}
-    </ListBody>
-  </ContentContainer>
-);
+export const ExpenseList = () => {
+  const expenses = useSelector((state) =>
+    selectExpenses(state.expenses, state.filters),
+  );
 
-const mapStateToProps = (state) => {
-  return {
-    expenses: selectExpenses(state.expenses, state.filters),
-  };
+  return (
+    <ContentContainer>
+      <ListHeader>
+        <HeaderMobile>Expenses</HeaderMobile>
+        <HeaderDesktop>Expense</HeaderDesktop>
+        <HeaderDesktop>Amount</HeaderDesktop>
+      </ListHeader>
+      <ListBody>
+        {expenses.length === 0 ? (
+          <ListMessage>
+            <span>No expenses</span>
+          </ListMessage>
+        ) : (
+          expenses.map((expense) => {
+            return <ExpenseListItem key={expense.id} {...expense} />;
+          })
+        )}
+      </ListBody>
+    </ContentContainer>
+  );
 };
 
-export default connect(mapStateToProps)(ExpenseList);
+export default ExpenseList;
 
 const ListHeader = styled.div`
   background: ${config.COLORS.OFF_WHITE};

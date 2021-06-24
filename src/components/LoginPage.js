@@ -1,25 +1,25 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { startLogin } from '../store/auth/actions';
 import styled from 'styled-components';
 import config from '../styles/stylesConfig';
 import Button from './Button';
 
-export const LoginPage = ({ startLogin }) => (
-  <Container>
-    <Box>
-      <Title>Expensify</Title>
-      <Text>It's time to get your expenses under control.</Text>
-      <Button onClick={startLogin}>Login with Google</Button>
-    </Box>
-  </Container>
-);
+export const LoginPage = () => {
+  const dispatch = useDispatch();
 
-const mapDispatchToProps = (dispatch) => ({
-  startLogin: () => dispatch(startLogin()),
-});
+  return (
+    <Container>
+      <Box>
+        <Title>Expensify</Title>
+        <Text>It's time to get your expenses under control.</Text>
+        <Button onClick={() => dispatch(startLogin)}>Login with Google</Button>
+      </Box>
+    </Container>
+  );
+};
 
-export default connect(undefined, mapDispatchToProps)(LoginPage);
+export default LoginPage;
 
 const Container = styled.div`
   align-items: center;
