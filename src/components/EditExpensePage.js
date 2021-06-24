@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import ExpenseForm from './ExpenseForm';
 import ContentContainer from './ContentContainer';
@@ -7,48 +7,42 @@ import Button from './Button';
 import { editExpense, removeExpense } from '../store/expenses/actions';
 import config from '../styles/stylesConfig';
 
-export class EditExpensePage extends React.Component {
-  onSubmit = (expense) => {
-    this.props.startEditExpense(this.props.expense.id, expense);
-    this.props.history.push('/');
+export const EditExpensePage = ({ match, history }) => {
+  const dispatch = useDispatch();
+  const startEditExpense = (id, expense) => dispatch(editExpense(id, expense));
+  const startRemoveExpense = (data) => dispatch(removeExpense(data));
+  const expense = useSelector((state) =>
+    state.expenses.find((expense) => expense.id === match.params.id),
+  );
+
+  const onSubmit = (data) => {
+    startEditExpense(expense.id, data);
+    history.push('/');
   };
 
-  onRemove = () => {
-    this.props.startRemoveExpense({ id: this.props.expense.id });
-    this.props.history.push('/');
+  const onRemove = () => {
+    startRemoveExpense({ id: expense.id });
+    history.push('/');
   };
 
-  render() {
-    return (
-      <div>
-        <PageHeader>
-          <ContentContainer>
-            <PageTitle>Edit Expense</PageTitle>
-          </ContentContainer>
-        </PageHeader>
+  return (
+    <div>
+      <PageHeader>
         <ContentContainer>
-          <ExpenseForm expense={this.props.expense} onSubmit={this.onSubmit} />
-          <Button background={'#888888'} onClick={this.onRemove}>
-            Remove Expense
-          </Button>
+          <PageTitle>Edit Expense</PageTitle>
         </ContentContainer>
-      </div>
-    );
-  }
-}
+      </PageHeader>
+      <ContentContainer>
+        <ExpenseForm expense={expense} onSubmit={onSubmit} />
+        <Button background={'#888888'} onClick={onRemove}>
+          Remove Expense
+        </Button>
+      </ContentContainer>
+    </div>
+  );
+};
 
-const mapStateToProps = (state, props) => ({
-  expense: state.expenses.find(
-    (expense) => expense.id === props.match.params.id,
-  ),
-});
-
-const mapDispatchToProps = (dispatch, props) => ({
-  startEditExpense: (id, expense) => dispatch(editExpense(id, expense)),
-  startRemoveExpense: (data) => dispatch(removeExpense(data)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(EditExpensePage);
+export default EditExpensePage;
 
 const PageHeader = styled.header`
   background: ${config.COLORS.OFF_WHITE};
