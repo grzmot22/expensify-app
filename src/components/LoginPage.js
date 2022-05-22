@@ -1,9 +1,9 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { startLogin } from '../store/auth/actions';
-import styled from 'styled-components';
-import config from '../styles/stylesConfig';
-import Button from './Button';
+import React from "react";
+import { useDispatch } from "react-redux";
+import styled from "styled-components";
+import { startLogin } from "../store/auth/actions";
+import config from "../styles/stylesConfig";
+import Button from "./Button";
 
 export const LoginPage = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,14 @@ export const LoginPage = () => {
       <Box>
         <Title>Expensify</Title>
         <Text>It's time to get your expenses under control.</Text>
-        <Button onClick={() => dispatch(startLogin)}>Login with Google</Button>
+        <Button
+          onClick={() => {
+            console.log("DD");
+            dispatch(startLogin());
+          }}
+        >
+          Login with Google
+        </Button>
       </Box>
     </Container>
   );
@@ -23,7 +30,7 @@ export default LoginPage;
 
 const Container = styled.div`
   align-items: center;
-  background: url('/images/bg.jpg');
+  background: url("/images/bg.jpg");
   background-size: cover;
   display: flex;
   height: 100vh;

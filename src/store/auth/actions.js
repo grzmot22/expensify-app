@@ -1,5 +1,5 @@
-import { firebase, googleAuthProvider } from '../../firebase/firebase';
-import types from './types';
+import { firebase, googleAuthProvider } from "../../firebase/firebase";
+import types from "./types";
 
 export const login = (uid) => ({
   type: types.LOGIN,
@@ -8,6 +8,7 @@ export const login = (uid) => ({
 
 export const startLogin = () => {
   return () => {
+    console.log("DDDLD");
     return firebase.auth().signInWithPopup(googleAuthProvider);
   };
 };

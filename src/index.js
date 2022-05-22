@@ -1,53 +1,51 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import { Provider } from 'react-redux';
-import AppRouter, { history } from './routers/AppRouter';
-import configureStore from './store/configureStore';
-import { setExpenses } from "./store/expenses/actions";
+import "normalize.css/normalize.css";
+import React from "react";
+import "react-dates/lib/css/_datepicker.css";
+import { createRoot } from "react-dom/client";
+import { Provider } from "react-redux";
+import LoadingPage from "./components/LoadingPage";
+import { firebase } from "./firebase/firebase";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import AppRouter, { history } from "./routers/AppRouter";
 import { login, logout } from "./store/auth/actions";
-import 'react-dates/lib/css/_datepicker.css';
-import 'normalize.css/normalize.css';
-import { firebase } from'./firebase/firebase';
-import LoadingPage from './components/LoadingPage'
-
-import reportWebVitals from './reportWebVitals';
-
-
+import configureStore from "./store/configureStore";
+import { setExpenses } from "./store/expenses/actions";
 
 const store = configureStore();
 
 const jsx = (
-    <Provider store={store}>
-        <AppRouter />
-    </Provider>
-    
+  <Provider store={store}>
+    <AppRouter />
+  </Provider>
 );
+const root = createRoot(document.getElementById("root"));
 
 let hasRendered = false;
+
 const renderApp = () => {
-    if (!hasRendered) {
-        ReactDOM.render(jsx, document.getElementById('root'));
-        hasRendered = true;
-    }
+  if (!hasRendered) {
+    root.render(jsx);
+    hasRendered = true;
+  }
 };
 
-ReactDOM.render(<LoadingPage />, document.getElementById('root'));
+root.render(<LoadingPage />);
 
 firebase.auth().onAuthStateChanged((user) => {
-    if(user) {
-        store.dispatch(login(user.uid));
-        store.dispatch(setExpenses()).then(() => {
-            renderApp();
-            if (history.location.pathname === '/') {
-                history.push('/dashboard');
-            }
-        });
-    } else {
-        store.dispatch(logout());
-        renderApp();
-        history.push('/');
-    }
+  if (user) {
+    store.dispatch(login(user.uid));
+    store.dispatch(setExpenses()).then(() => {
+      renderApp();
+      if (history.location.pathname === "/") {
+        history.push("/dashboard");
+      }
+    });
+  } else {
+    store.dispatch(logout());
+    renderApp();
+    history.push("/");
+  }
 });
 
 reportWebVitals();
